@@ -1,8 +1,8 @@
 package com.chicken.foodtruck;
 
-import com.chicken.foodtruck.model.InMemoryMenuItemRepository;
-import com.chicken.foodtruck.model.MenuItem;
-import com.chicken.foodtruck.model.MenuItemRepository;
+import com.chicken.foodtruck.model.InMemoryItemRepository;
+import com.chicken.foodtruck.model.Item;
+import com.chicken.foodtruck.model.ItemRepository;
 
 /**
  * Main.java
@@ -12,19 +12,19 @@ import com.chicken.foodtruck.model.MenuItemRepository;
 public class Main {
 
     public static void main(String[] args) {
-        MenuItemRepository repository = new InMemoryMenuItemRepository();
+        ItemRepository repository = new InMemoryItemRepository();
 
 
-        MenuItem wings = repository.save(
-                new MenuItem(0, "Chicken Wings", "Buffalo Chicken Wings", 12.00, false)
+        Item wings = repository.save(
+                new Item(0, "Chicken Wings", "Buffalo Chicken Wings", 12.00, false)
         );
 
-        MenuItem sandwich = repository.save(
-                new MenuItem(0, "Chicken Sandwich", "Spicy Chicken Sandwich", 9.00, false)
+        Item sandwich = repository.save(
+                new Item(0, "Chicken Sandwich", "Spicy Chicken Sandwich", 9.00, false)
         );
 
-        MenuItem breast = repository.save(
-                new MenuItem(0, "Chicken Breast", "Plant-Based Chicken Breast", 6.00, true)
+        Item breast = repository.save(
+                new Item(0, "Chicken Breast", "Plant-Based Chicken Breast", 6.00, true)
         );
 
         System.out.println("Created: " + wings);
@@ -33,7 +33,7 @@ public class Main {
 
         System.out.println();
 
-        for (MenuItem item : repository.findAll()) {
+        for (Item item : repository.findAll()) {
             System.out.println(item);
         }
 
@@ -47,14 +47,14 @@ public class Main {
 
         repository.deleteById(breast.getId());
         System.out.println("Deleted Chicken Breast.");
-        for (MenuItem item : repository.findAll()) {
+        for (Item item : repository.findAll()) {
             System.out.println(item);
         }
 
         System.out.println();
 
         try {
-            MenuItem invalid = new MenuItem(
+            Item invalid = new Item(
                     0, "Invalid Food", "Test", -5.00, false);
             repository.save(invalid);
         } catch (IllegalArgumentException e) {

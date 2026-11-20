@@ -1,18 +1,18 @@
 package com.chicken.foodtruck.model;
 /**
- * MenuItem.java
+ * Item.java
  * @author Andrew Ngo, Kotaro Tomas
- * Shows results of menu items
+ * Shows results of items
  */
 
-public class MenuItem {
+public class Item {
     private int id;
     private String name;
     private String description;
     private double price;
     private boolean vegetarian;
 
-    public MenuItem(int id, String name, String description, double price, boolean vegetarian) {
+    public Item(int id, String name, String description, double price, boolean vegetarian) {
         setId(id);
         setName(name);
         setDescription(description);
