@@ -6,7 +6,6 @@ import java.util.List;
  * @author Andrew Ngo, Kotaro Tomas
  * Shows results of the in memory menu item repository
  */
-
 public class InMemoryItemRepository implements ItemRepository {
 
     private final List<Item> items = new ArrayList<>();
@@ -70,6 +69,11 @@ public class InMemoryItemRepository implements ItemRepository {
                 item.getPrice(),
                 item.isVegetarian()
         );
+    }
+
+    public void loadItem(Item item) {
+        items.add(item);
+        nextId = Math.max(nextId, item.getId() + 1);
     }
 
     public static void main(String[] args) {
